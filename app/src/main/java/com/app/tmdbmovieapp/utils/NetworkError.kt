@@ -17,8 +17,8 @@ enum class NetworkError : Error {
 
 fun NetworkError.toString(context: Context): String {
     val resId = when (this) {
-        NetworkError.NO_INTERNET, NetworkError.REQUEST_TIMEOUT -> R.string.no_internet_error
-        else -> R.string.something_went_wrong
+        NetworkError.NO_INTERNET, NetworkError.REQUEST_TIMEOUT -> R.string.error_no_internet
+        else -> R.string.error_something_went_wrong
     }
     return context.getString(resId)
 }

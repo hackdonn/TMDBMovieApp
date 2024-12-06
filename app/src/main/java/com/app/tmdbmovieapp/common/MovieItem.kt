@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.app.tmdbmovieapp.data.model.Movies
 
 @Composable
-fun MovieListItem(
+fun MovieItem(
     movie: Movies,
     onMovieClicked: (Movies) -> Unit,
     modifier: Modifier = Modifier

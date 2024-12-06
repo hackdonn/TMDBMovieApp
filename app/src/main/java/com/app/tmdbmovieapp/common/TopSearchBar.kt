@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.app.tmdbmovieapp.R
 
 @Composable
-fun SearchBar(text: String, onTextChange: (String) -> Unit, modifier: Modifier = Modifier) {
+fun TopSearchBar(text: String, onTextChange: (String) -> Unit, modifier: Modifier = Modifier) {
     val focusManager = LocalFocusManager.current
 
     OutlinedTextField(
