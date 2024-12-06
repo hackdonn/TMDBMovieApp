@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.app.tmdbmovieapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.app.tmdbmovieapp"
