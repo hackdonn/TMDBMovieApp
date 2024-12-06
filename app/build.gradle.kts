@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("kotlin-kapt")
     alias(libs.plugins.android.application)
@@ -19,17 +22,24 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val buildProperty = Properties()
+        buildProperty.load(FileInputStream(rootProject.file("build.property")))
+        buildConfigField(
+            type = "String",
+            name = "BASE_URL",
+            value = buildProperty.getProperty("BASE_URL")
+        )
+        buildConfigField(
+            type = "String",
+            name = "TMDB_API_KEY",
+            value = buildProperty.getProperty("TMDB_API_KEY")
+        )
     }
 
     buildTypes {
-        debug {
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"")
-            buildConfigField("String", "TMDB_API_KEY", "\"8c63ab414c1c371aa0065c7cfde429e4\"")
-        }
         release {
-            buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"")
-            buildConfigField("String", "TMDB_API_KEY", "\"8c63ab414c1c371aa0065c7cfde429e4\"")
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -38,7 +48,7 @@ android {
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_18
-                targetCompatibility = JavaVersion.VERSION_18
+        targetCompatibility = JavaVersion.VERSION_18
     }
     kotlinOptions {
         jvmTarget = "18"
